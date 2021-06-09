@@ -42,7 +42,7 @@ public class Expense {
         return "Expense{" +
                 "Time: " + eventTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")) +
                 ", Event: " + eventName + '\'' +
-                ", Cost: " + "%,8d%n" + eventCost + "VND" +
+                ", Cost: " + String.format("%,8d%n",eventCost) + " VND" +
                 '}';
     }
 }
