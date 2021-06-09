@@ -1,6 +1,7 @@
 package sample.Model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class Fund {
     private int totalSpending;
     private int recharge;
     private LocalDateTime lastRechargeDate;
+    private LocalDateTime lastExpense;
     private List<Expense> expenseList;
 
     public Fund(String fundName) {
@@ -67,6 +69,14 @@ public class Fund {
 
     public void setExpenseList(List<Expense> expenseList) {
         this.expenseList = expenseList;
+    }
+
+    public LocalDateTime getLastExpense() {
+        return lastExpense;
+    }
+
+    public void setLastExpense(String lastExpense) {
+        this.lastExpense = LocalDateTime.parse(lastExpense,DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
 
     @Override
