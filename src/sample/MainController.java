@@ -2,6 +2,7 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -25,7 +26,7 @@ public class MainController implements Initializable {
     private TableColumn<Fund, String> colCreatedDate;
 
     @FXML
-    private TableColumn<Fund, Integer> colBalance;
+    private TableColumn<Fund, String> colBalance;
 
     @FXML
     private TableColumn<Fund, Integer> colTotalSpending;
@@ -63,14 +64,24 @@ public class MainController implements Initializable {
     @FXML
     private Label lbUserName;
 
-    public void setBtnAddToFund(Account account, String fundName) {
-        account.getFundList().add(new Fund(fundName));
-        fundObservableList.add(new Fund(fundName));
 
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        colFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
+        colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
+        colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
+        colLastRecharge.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
+        fundTableView.setItems(fundObservableList);
+    }
+
+
+    public void setBtnAddToFund(ActionEvent actionEvent) {
+        fundObservableList.add(new Fund(tfNewFundName.getText()));
+    }
+
+    public void initialize(SortEvent<TableView<Fund>> tableViewSortEvent) {
         colFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
         colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
         colBalance.setCellValueFactory(new PropertyValueFactory<>("fundBalance"));

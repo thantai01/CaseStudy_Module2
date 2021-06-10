@@ -1,5 +1,7 @@
 package sample.Model;
 
+import javafx.scene.control.TextField;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -10,8 +12,8 @@ public class Fund {
     private int balance;
     private int totalSpending;
     private int recharge;
-    private LocalDateTime lastRechargeDate;
-    private LocalDateTime createdTime;
+    private String lastRechargeDate;
+    private String createdTime;
     private List<Expense> expenseList;
 
 
@@ -20,8 +22,8 @@ public class Fund {
         this.balance = 0;
         this.totalSpending = 0;
         this.recharge = 0;
-        this.createdTime = LocalDateTime.now();
-        this.lastRechargeDate = LocalDateTime.now();
+        this.createdTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        this.lastRechargeDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         this.expenseList = new ArrayList<>();
     }
 
@@ -44,7 +46,7 @@ public class Fund {
         return recharge;
     }
 
-    public LocalDateTime getLastRechargeDate() {
+    public String getLastRechargeDate() {
         return lastRechargeDate;
     }
 
@@ -68,7 +70,7 @@ public class Fund {
         this.recharge = recharge;
     }
 
-    public void setLastRechargeDate(LocalDateTime lastRechargeDate) {
+    public void setLastRechargeDate(String lastRechargeDate) {
         this.lastRechargeDate = lastRechargeDate;
     }
 
@@ -76,12 +78,20 @@ public class Fund {
         this.expenseList = expenseList;
     }
 
-    public LocalDateTime getLastExpense() {
+    public String getLastExpense() {
         return createdTime;
     }
 
     public void setLastExpense(String lastExpense) {
-        this.createdTime = LocalDateTime.parse(lastExpense,DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        this.createdTime = lastExpense;
+    }
+
+    public String getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(String createdTime) {
+        this.createdTime = createdTime;
     }
 
     @Override
