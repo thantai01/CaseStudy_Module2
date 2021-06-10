@@ -41,10 +41,13 @@ public class MainController implements Initializable {
     private TableColumn<Fund, Integer> colTotalSpending;
 
     @FXML
-    private TableColumn<?,?> colTotalDeposited;
+    private TableColumn<Fund, Integer> colTotalDeposited;
 
     @FXML
-    private TableColumn<Fund, String> colLastRecharge;
+    private TableColumn<Fund, Integer> colLastDeposited;
+
+    @FXML
+    private TableColumn<Fund, String> colLastDepositedTime;
 
     @FXML
     private TextField tfEventName;
@@ -76,21 +79,6 @@ public class MainController implements Initializable {
     @FXML
     private Label lbUserName;
 
-    public void setBtnCreateFund(ActionEvent actionEvent) {
-        fundObservableList.add(new Fund(tfNewFundName.getText()));
-    }
-
-    public void setBtnDeposited(ActionEvent actionEvent) {
-        for(Fund funds : fundObservableList) {
-            if(funds.getFundName().equals(tfFundDestination.getText())) {
-                funds.setBalance(Integer.parseInt(tfDeposited.getText()));
-                funds.setLastRechargeDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
-            }
-        }
-        fundTableView.refresh();
-    }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         colFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
@@ -98,7 +86,9 @@ public class MainController implements Initializable {
         colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
         colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
         colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
-        colLastRecharge.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
+        colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
+        colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
+
         fundTableView.setItems(fundObservableList);
         fundTableView.setEditable(true);
     }
@@ -108,8 +98,26 @@ public class MainController implements Initializable {
         colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
         colBalance.setCellValueFactory(new PropertyValueFactory<>("fundBalance"));
         colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
-        colLastRecharge.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
+        colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
+        colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
+        colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
         fundTableView.setItems(fundObservableList);
+    }
+    public void setBtnCreateFund(ActionEvent actionEvent) {
+        fundObservableList.add(new Fund(tfNewFundName.getText()));
+    }
+
+    public void setBtnDeposited(ActionEvent actionEvent) {
+        for(Fund funds : fundObservableList) {
+            if(funds.getFundName().equals(tfFundDestination.getText())) {
+                int last = funds.getDeposited();
+                funds.setDeposited(Integer.parseInt(tfDeposited.getText()));
+                funds.setTotalDeposited(funds.getDeposited()+last);
+                funds.setBalance(+ funds.getTotalDeposited() - funds.getTotalSpending());
+                funds.setLastRechargeDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
+            }
+        }
+        fundTableView.refresh();
     }
 
 

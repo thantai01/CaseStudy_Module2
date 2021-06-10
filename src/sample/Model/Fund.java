@@ -18,10 +18,10 @@ public class Fund {
 
     public Fund(String fundName) {
         this.fundName = fundName;
-        this.balance = + this.deposited - this.totalSpending;
+        this.balance = 0;
         this.totalSpending = 0;
         this.deposited = 0;
-        this.totalDeposited += deposited;
+        this.totalDeposited =0;
         this.createdTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         this.lastRechargeDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         this.expenseList = new ArrayList<>();
