@@ -86,12 +86,14 @@ public class Fund {
 
     @Override
     public String toString() {
-        return "Fund {" +
-                "Name:'" + fundName + '\'' +
-                ", Balance=" + balance +
-                ", TotalSpending=" + totalSpending +
-                ", Recharge=" + recharge +
-                ", LastRechargeDate=" + lastRechargeDate +
+        return "Fund{" +
+                "fundName='" + fundName + '\'' +
+                ", balance=" + balance +
+                ", totalSpending=" + totalSpending +
+                ", recharge=" + recharge +
+                ", lastRechargeDate=" + lastRechargeDate +
+                ", createdTime=" + createdTime +
+                ", expenseList=" + expenseList +
                 '}';
     }
 }
