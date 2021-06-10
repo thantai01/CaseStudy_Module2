@@ -1,7 +1,5 @@
 package sample.Model;
 
-import javafx.scene.control.TextField;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -11,7 +9,8 @@ public class Fund {
     private String fundName;
     private int balance;
     private int totalSpending;
-    private int recharge;
+    private int deposited;
+    private int totalDeposited;
     private String lastRechargeDate;
     private String createdTime;
     private List<Expense> expenseList;
@@ -19,9 +18,10 @@ public class Fund {
 
     public Fund(String fundName) {
         this.fundName = fundName;
-        this.balance = 0;
+        this.balance = + this.deposited - this.totalSpending;
         this.totalSpending = 0;
-        this.recharge = 0;
+        this.deposited = 0;
+        this.totalDeposited += deposited;
         this.createdTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         this.lastRechargeDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         this.expenseList = new ArrayList<>();
@@ -42,8 +42,8 @@ public class Fund {
         return totalSpending;
     }
 
-    public int getRecharge() {
-        return recharge;
+    public int getDeposited() {
+        return deposited;
     }
 
     public String getLastRechargeDate() {
@@ -66,8 +66,8 @@ public class Fund {
         this.totalSpending = totalSpending;
     }
 
-    public void setRecharge(int recharge) {
-        this.recharge = recharge;
+    public void setDeposited(int deposited) {
+        this.deposited = deposited;
     }
 
     public void setLastRechargeDate(String lastRechargeDate) {
@@ -86,6 +86,14 @@ public class Fund {
         this.createdTime = lastExpense;
     }
 
+    public int getTotalDeposited() {
+        return totalDeposited;
+    }
+
+    public void setTotalDeposited(int totalDeposited) {
+        this.totalDeposited = totalDeposited;
+    }
+
     public String getCreatedTime() {
         return createdTime;
     }
@@ -100,7 +108,7 @@ public class Fund {
                 "fundName='" + fundName + '\'' +
                 ", balance=" + balance +
                 ", totalSpending=" + totalSpending +
-                ", recharge=" + recharge +
+                ", recharge=" + deposited +
                 ", lastRechargeDate=" + lastRechargeDate +
                 ", createdTime=" + createdTime +
                 ", expenseList=" + expenseList +

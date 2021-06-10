@@ -54,12 +54,12 @@
          <children>
             <Label text="Funds Name" />
             <TextField fx:id="tfNewFundName" prefHeight="25.0" prefWidth="190.0" />
-            <Button fx:id="btnCreateFund" mnemonicParsing="false" onAction="#setBtnAddToFund" prefHeight="25.0" prefWidth="155.0" text="Create Fund" />
+            <Button fx:id="btnCreateFund" mnemonicParsing="false" onAction="#setBtnCreateFund" prefHeight="25.0" prefWidth="155.0" text="Create Fund" />
             <Label text="Deposite" />
             <TextField fx:id="tfDeposited" prefHeight="25.0" prefWidth="83.0" />
             <Label text="To Funds" />
             <TextField fx:id="tfFundDestination" prefHeight="25.0" prefWidth="83.0" />
-            <Button fx:id="btnDeposited" mnemonicParsing="false" text="Deposite" />
+            <Button fx:id="btnDeposited" mnemonicParsing="false" onAction="#setBtnDeposited" text="Deposite" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
