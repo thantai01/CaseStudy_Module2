@@ -1,10 +1,11 @@
 package sample.Model;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Account {
     private Map<String,String> accountManager;
+    private List<Fund> fundList;
 
     public Account(Map<String, String> accountManager) {
         this.accountManager = accountManager;
@@ -19,6 +20,14 @@ public class Account {
 
     public void setAccountManager(Map<String, String> accountManager) {
         this.accountManager = accountManager;
+    }
+
+    public List<Fund> getFundList() {
+        return fundList;
+    }
+
+    public void setFundList(List<Fund> fundList) {
+        this.fundList = fundList;
     }
 
     @Override

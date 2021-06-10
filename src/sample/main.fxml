@@ -8,15 +8,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="513.0" prefWidth="156.0" style="-fx-background-color: #e6e6e6;" />
-      <VBox layoutX="181.0" layoutY="14.0" prefHeight="513.0" prefWidth="516.0" style="-fx-background-color: #e6e6e6;">
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: #e6e6e6;" />
+      <VBox layoutX="181.0" layoutY="14.0" prefHeight="533.0" prefWidth="516.0" style="-fx-background-color: #e6e6e6;">
          <children>
-            <TableView prefHeight="167.0" prefWidth="607.0">
+            <TableView prefHeight="170.0" prefWidth="516.0">
               <columns>
                 <TableColumn prefWidth="87.0" resizable="false" text="Funds Name" />
                 <TableColumn prefWidth="76.0" resizable="false" text="Balance" />
@@ -25,57 +24,49 @@
                   <TableColumn prefWidth="124.0" resizable="false" text="Last Expense" />
               </columns>
             </TableView>
-            <ListView prefHeight="348.0" prefWidth="375.0" />
+            <ListView prefHeight="373.0" prefWidth="516.0" />
          </children>
       </VBox>
-      <HBox layoutX="14.0" layoutY="535.0" prefHeight="42.0" prefWidth="330.0" spacing="10.0" style="-fx-background-color: #e6e6e6;">
-         <children>
-            <Label text="Funds Name">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Label>
-            <TextField />
-            <Button mnemonicParsing="false" text="Create Fund" />
-         </children>
-         <padding>
-            <Insets left="5.0" top="10.0" />
-         </padding>
-      </HBox>
-      <HBox layoutX="413.0" layoutY="535.0" prefHeight="42.0" prefWidth="374.0" spacing="10.0" style="-fx-background-color: #e6e6e6;">
-         <children>
-            <Label text="Deposite">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Label>
-            <TextField prefHeight="25.0" prefWidth="83.0" />
-            <Label layoutX="10.0" layoutY="20.0" text="To Fund">
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Label>
-            <TextField layoutX="68.0" layoutY="20.0" prefHeight="25.0" prefWidth="83.0" />
-            <Button mnemonicParsing="false" text="Deposite" />
-         </children>
-         <padding>
-            <Insets left="5.0" top="10.0" />
-         </padding>
-      </HBox>
-      <VBox layoutX="14.0" layoutY="586.0" prefHeight="192.0" prefWidth="149.0" spacing="5.0" style="-fx-background-color: #e6e6e6;">
+      <VBox layoutX="14.0" layoutY="410.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0" style="-fx-background-color: #e6e6e6;">
          <children>
             <Label text="Expense Name" />
-            <TextField />
+            <TextField promptText="Event" />
             <Label text="Expense Cost" />
-            <TextField />
-            <Button mnemonicParsing="false" text="Button" />
-            <Label text="Add to Fund" />
-            <TextField />
+            <TextField promptText="Cost" />
+            <Button mnemonicParsing="false" text="Add to" />
+            <TextField prefHeight="25.0" prefWidth="61.0" promptText="Funds" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <Label layoutX="14.0" layoutY="778.0" prefHeight="17.0" prefWidth="777.0" text="Command" />
+      <VBox layoutX="697.0" layoutY="180.0" prefHeight="347.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Button" />
+         </children>
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="183.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0">
+         <children>
+            <Label text="Funds Name" />
+            <TextField prefHeight="25.0" prefWidth="190.0" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Create Fund" />
+            <Label text="Deposite" />
+            <TextField prefHeight="25.0" prefWidth="83.0" />
+            <Label text="To Funds" />
+            <TextField prefHeight="25.0" prefWidth="83.0" />
+            <Button mnemonicParsing="false" text="Deposite" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <TextField disable="true" editable="false" layoutX="181.0" layoutY="554.0" prefHeight="17.0" prefWidth="516.0" promptText="Command Line:" />
+      <Label layoutX="710.0" layoutY="14.0" prefHeight="17.0" prefWidth="79.0" text="Welcome:" underline="true" />
+      <Label layoutX="708.0" layoutY="71.0" prefHeight="17.0" prefWidth="79.0" text="Last visit time:" underline="true" />
+      <Label layoutX="708.0" layoutY="39.0" text="userName" />
+      <Label layoutX="708.0" layoutY="97.0" text="loginTime" />
    </children>
 </AnchorPane>
