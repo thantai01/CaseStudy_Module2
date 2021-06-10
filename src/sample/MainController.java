@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sample.Model.Account;
+import sample.Model.Expense;
 import sample.Model.Fund;
 
 import java.net.URL;
@@ -20,9 +21,9 @@ public class MainController implements Initializable {
     ObservableList<Fund> fundObservableList = FXCollections.observableArrayList();
 
     public MainController() {
-        fundObservableList.add(new Fund("Daily Paid"));
-        fundObservableList.add(new Fund("Study Paid"));
-        fundObservableList.add(new Fund("Subsistence Paid"));
+        fundObservableList.add(new Fund("Daily"));
+        fundObservableList.add(new Fund("Study"));
+        fundObservableList.add(new Fund("Subsistence"));
     }
 
     @FXML
@@ -103,6 +104,7 @@ public class MainController implements Initializable {
         colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
         fundTableView.setItems(fundObservableList);
     }
+
     public void setBtnCreateFund(ActionEvent actionEvent) {
         fundObservableList.add(new Fund(tfNewFundName.getText()));
     }
@@ -119,7 +121,15 @@ public class MainController implements Initializable {
         }
         fundTableView.refresh();
     }
-
+    public void setBtnAddToFund(ActionEvent actionEvent) {
+        for (Fund funds:fundObservableList) {
+            if(funds.getFundName().equals(tfExpenseDestination.getText())) {
+                funds.getExpenseList().add(
+                        new Expense(tfEventName.getText(),Integer.parseInt(tfEventCost.getText())));
+            }
+            System.out.println(funds.getExpenseList().toString());
+        }
+    }
 
 
 }

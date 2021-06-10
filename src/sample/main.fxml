@@ -34,7 +34,7 @@
             <TextField fx:id="tfEventName" promptText="Event" />
             <Label text="Expense Cost" />
             <TextField fx:id="tfEventCost" promptText="Cost" />
-            <Button fx:id="btnAddToFund" mnemonicParsing="false" text="Add to" />
+            <Button fx:id="btnAddToFund" mnemonicParsing="false" onAction="#setBtnAddToFund" text="Add to" />
             <TextField fx:id="tfExpenseDestination" prefHeight="25.0" prefWidth="61.0" promptText="Funds" />
          </children>
          <padding>
