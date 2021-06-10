@@ -1,25 +1,29 @@
 package sample.Model;
 
+import sample.Service.Manager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Account {
-    private Map<String,String> accountManager;
+public class Account implements Manager<Fund> {
+    private Map<String, String> accountInfo;
     private List<Fund> fundList;
 
-    public Account(Map<String, String> accountManager) {
-        this.accountManager = accountManager;
+
+    public Account(String accID, String pass) {
+        this.accountInfo = new HashMap<>();
+        this.accountInfo.put(accID,pass);
+        this.fundList = new ArrayList<>();
     }
 
-    public Account() {
+    public Map<String, String> getAccountInfo() {
+        return accountInfo;
     }
 
-    public Map<String, String> getAccountManager() {
-        return accountManager;
-    }
-
-    public void setAccountManager(Map<String, String> accountManager) {
-        this.accountManager = accountManager;
+    public void setAccountInfo(Map<String, String> accountInfo) {
+        this.accountInfo = new HashMap<>();
     }
 
     public List<Fund> getFundList() {
@@ -33,7 +37,27 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "accountManager=" + accountManager +
+                ", fundList=" + fundList +
                 '}';
+    }
+
+    @Override
+    public void add(Fund fund) {
+        fundList.add(fund);
+    }
+
+    @Override
+    public void print() {
+
+    }
+
+    @Override
+    public void deleteItem() {
+
+    }
+
+    @Override
+    public void editItem() {
+
     }
 }

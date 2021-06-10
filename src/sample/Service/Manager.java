@@ -1,4 +1,4 @@
-package sample.Model;
+package sample.Service;
 
 public interface Manager<T> {
     void add(T t);

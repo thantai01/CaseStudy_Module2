@@ -19,6 +19,7 @@ public class Main extends Application {
         primaryStage.setTitle("Money Tracing & Controller Application");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
 

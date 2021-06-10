@@ -11,12 +11,17 @@ public class Fund {
     private int totalSpending;
     private int recharge;
     private LocalDateTime lastRechargeDate;
-    private LocalDateTime lastExpense;
+    private LocalDateTime createdTime;
     private List<Expense> expenseList;
+
 
     public Fund(String fundName) {
         this.fundName = fundName;
         this.balance = 0;
+        this.totalSpending = 0;
+        this.recharge = 0;
+        this.createdTime = LocalDateTime.now();
+        this.lastRechargeDate = LocalDateTime.now();
         this.expenseList = new ArrayList<>();
     }
 
@@ -72,11 +77,11 @@ public class Fund {
     }
 
     public LocalDateTime getLastExpense() {
-        return lastExpense;
+        return createdTime;
     }
 
     public void setLastExpense(String lastExpense) {
-        this.lastExpense = LocalDateTime.parse(lastExpense,DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        this.createdTime = LocalDateTime.parse(lastExpense,DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
 
     @Override

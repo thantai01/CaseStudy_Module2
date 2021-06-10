@@ -12,22 +12,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: #e6e6e6;" />
-      <VBox layoutX="181.0" layoutY="14.0" prefHeight="533.0" prefWidth="516.0" style="-fx-background-color: #e6e6e6;">
+      <VBox layoutX="13.0" layoutY="49.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: #e6e6e6;" />
+      <VBox layoutX="176.0" layoutY="48.0" prefHeight="533.0" prefWidth="516.0" style="-fx-background-color: #e6e6e6;">
          <children>
-            <TableView prefHeight="170.0" prefWidth="516.0">
+            <TableView prefHeight="165.0" prefWidth="592.0">
               <columns>
-                <TableColumn prefWidth="87.0" resizable="false" text="Funds Name" />
-                <TableColumn prefWidth="76.0" resizable="false" text="Balance" />
-                  <TableColumn prefWidth="104.0" resizable="false" text="Total Spending" />
-                  <TableColumn prefWidth="124.0" resizable="false" text="Last Recharge" />
-                  <TableColumn prefWidth="124.0" resizable="false" text="Last Expense" />
+                <TableColumn fx:id="colFundName" prefWidth="87.0" resizable="false" text="Funds Name" />
+                  <TableColumn prefWidth="107.0" resizable="false" text="Created Date" />
+                <TableColumn prefWidth="97.0" resizable="false" text="Balance" />
+                  <TableColumn prefWidth="107.0" resizable="false" text="Total Spending" />
+                  <TableColumn prefWidth="117.0" resizable="false" text="Last Recharge" />
               </columns>
             </TableView>
             <ListView prefHeight="373.0" prefWidth="516.0" />
          </children>
       </VBox>
-      <VBox layoutX="14.0" layoutY="410.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0" style="-fx-background-color: #e6e6e6;">
+      <VBox layoutX="13.0" layoutY="445.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0" style="-fx-background-color: #e6e6e6;">
          <children>
             <Label text="Expense Name" />
             <TextField promptText="Event" />
@@ -40,33 +40,35 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox layoutX="697.0" layoutY="180.0" prefHeight="347.0" prefWidth="100.0" spacing="10.0">
+      <VBox layoutX="695.0" layoutY="215.0" prefHeight="347.0" prefWidth="100.0" spacing="10.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Button" />
+            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Button" />
+            <Button layoutX="20.0" layoutY="55.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Button" />
          </children>
          <padding>
             <Insets left="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox layoutX="14.0" layoutY="183.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0">
+      <VBox layoutX="13.0" layoutY="218.0" prefHeight="166.0" prefWidth="156.0" spacing="5.0">
          <children>
             <Label text="Funds Name" />
-            <TextField prefHeight="25.0" prefWidth="190.0" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Create Fund" />
+            <TextField fx:id="tfNewFundName" prefHeight="25.0" prefWidth="190.0" />
+            <Button fx:id="btnCreateFund" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Create Fund" />
             <Label text="Deposite" />
-            <TextField prefHeight="25.0" prefWidth="83.0" />
+            <TextField fx:id="tfDeposite" prefHeight="25.0" prefWidth="83.0" />
             <Label text="To Funds" />
-            <TextField prefHeight="25.0" prefWidth="83.0" />
-            <Button mnemonicParsing="false" text="Deposite" />
+            <TextField fx:id="tfFundDestination" prefHeight="25.0" prefWidth="83.0" />
+            <Button fx:id="btnDeposite" mnemonicParsing="false" text="Deposite" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <TextField disable="true" editable="false" layoutX="181.0" layoutY="554.0" prefHeight="17.0" prefWidth="516.0" promptText="Command Line:" />
-      <Label layoutX="710.0" layoutY="14.0" prefHeight="17.0" prefWidth="79.0" text="Welcome:" underline="true" />
-      <Label layoutX="708.0" layoutY="71.0" prefHeight="17.0" prefWidth="79.0" text="Last visit time:" underline="true" />
-      <Label layoutX="708.0" layoutY="39.0" text="userName" />
-      <Label layoutX="708.0" layoutY="97.0" text="loginTime" />
+      <TextField disable="true" editable="false" layoutX="176.0" layoutY="588.0" prefHeight="17.0" prefWidth="516.0" promptText="Command Line:" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="79.0" text="Welcome:" underline="true" />
+      <Label layoutX="14.0" layoutY="619.0" prefHeight="17.0" prefWidth="79.0" text="Last visit time:" underline="true" />
+      <Label fx:id="lbUserName" layoutX="91.0" layoutY="14.0" text="userName" />
+      <Label layoutX="93.0" layoutY="619.0" text="loginTime" />
    </children>
 </AnchorPane>
