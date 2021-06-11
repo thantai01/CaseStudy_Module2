@@ -3,7 +3,7 @@ package sample.Model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Expense extends Fund {
+public class Expense {
     private String eventTime;
     private String eventName;
     private int eventCost;
@@ -40,7 +40,6 @@ public class Expense extends Fund {
     @Override
     public String toString() {
         return
-                super.getFundName() +
                ": Expense { " +
                 "Time: " + eventTime +
                 ", Event: " + eventName + '\'' +

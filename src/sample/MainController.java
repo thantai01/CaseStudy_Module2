@@ -14,9 +14,12 @@ import sample.Model.Expense;
 import sample.Model.Fund;
 
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -91,21 +94,18 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        selectionFundView();
         fundTableView.setEditable(true);
         setEditableFundName();
         loadFundTable();
         loadExpenseTable();
 
-        tfFundDestination.setItems(fundObservableList);
-        tfExpenseDestination.setItems(fundObservableList);
 
 
     }
     public void selectionFundView() {
-        ObservableList<String> fundNameList = FXCollections.observableArrayList();
-        for (Fund fund : fundObservableList) {
-            fundNameList.add(fund.getFundName());
-        }
+        tfFundDestination.setItems(fundObservableList);
+        tfExpenseDestination.setItems(fundObservableList);
     }
 
     public void loadFundTable() {
@@ -116,7 +116,6 @@ public class MainController implements Initializable {
         colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
         colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
         colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
-        colBtnDelete.setCellValueFactory(new PropertyValueFactory<Fund,Button>("Delete"));
         fundTableView.setItems(fundObservableList);
     }
 
@@ -137,6 +136,7 @@ public class MainController implements Initializable {
 
 
     public void loadExpenseTable() {
+//        colOfFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
         colEventName.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         colEventCost.setCellValueFactory(new PropertyValueFactory<>("eventCost"));
         colEventTime.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
@@ -172,7 +172,7 @@ public class MainController implements Initializable {
 
     public void setBtnDeposited(ActionEvent actionEvent) {
         for(Fund funds : fundObservableList) {
-            if(funds.getFundName().equals(tfFundDestination.getItems().getClass().getName())) {
+            if(funds.getFundName().equals(tfFundDestination.getValue().getFundName())) {
                 int last = funds.getDeposited();
                 funds.setDeposited(Integer.parseInt(tfDeposited.getText()));
                 funds.setTotalDeposited(funds.getDeposited()+last);
@@ -183,19 +183,15 @@ public class MainController implements Initializable {
         fundTableView.refresh();
     }
 
-    public void setBtnAddExpenseToFund(ActionEvent actionEvent) {
-       expenseObservableList.add(new Expense(tfEventName.getText(),
-               Integer.parseInt(tfEventCost.getText())));
-    }
     public void setBtnAddToFund(ActionEvent actionEvent) {
         for(Fund fund: fundObservableList) {
-            if(txtFundName.getText().equals(fund.getFundName())){
+            if(tfExpenseDestination.getValue().getFundName().equals(fund.getFundName())){
                 fund.getExpenseList().add(new Expense(tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
                 expenseObservableList.add (new Expense(tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
             }
-            System.out.println(fund);
+            System.out.println("---" + fund + fund.getExpenseList().toString());
         }
 //        System.out.println(fundObservableList + "\n");
     }
