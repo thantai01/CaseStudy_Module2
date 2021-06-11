@@ -81,5 +81,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
+      <Button fx:id="btnDelete1" layoutX="641.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteFund" text="Delete" />
    </children>
 </AnchorPane>
