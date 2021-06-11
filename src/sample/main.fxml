@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1121.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <children>
       <VBox layoutX="13.0" layoutY="49.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: #e6e6e6;" />
-      <VBox layoutX="176.0" layoutY="48.0" prefHeight="166.0" prefWidth="765.0" style="-fx-background-color: #e6e6e6;">
+      <VBox layoutX="176.0" layoutY="48.0" prefHeight="166.0" prefWidth="843.0" style="-fx-background-color: #e6e6e6;">
          <children>
-            <TableView fx:id="fundTableView" onSort="#initialize" prefHeight="166.0" prefWidth="652.0">
+            <TableView fx:id="fundTableView" onSort="#initialize" prefHeight="166.0" prefWidth="925.0">
               <columns>
                 <TableColumn fx:id="colFundName" prefWidth="87.0" resizable="false" text="Funds Name" />
                   <TableColumn fx:id="colCreatedDate" prefWidth="107.0" resizable="false" text="Created Date" />
@@ -24,6 +24,7 @@
                   <TableColumn fx:id="colTotalDeposited" prefWidth="114.0" resizable="false" text="Total Deposite" />
                   <TableColumn fx:id="colLastDeposited" prefWidth="125.0" resizable="false" text="Last Deposited" />
                   <TableColumn fx:id="colLastDepositedTime" prefWidth="127.0" resizable="false" text=" Last Deposited Time" />
+                  <TableColumn fx:id="colBtnDelete" prefWidth="81.0" resizable="false" text="Delete" />
               </columns>
             </TableView>
          </children>
@@ -34,7 +35,7 @@
             <TextField fx:id="tfEventName" promptText="Event" />
             <Label text="Expense Cost" />
             <TextField fx:id="tfEventCost" promptText="Cost" />
-            <Button fx:id="btnAddToFund" mnemonicParsing="false" onAction="#setBtnAddToFund" text="Add to" />
+            <Button fx:id="btnAddToFund" mnemonicParsing="false" onAction="#setBtnAddExpenseToFund" text="Add to" />
             <TextField fx:id="tfExpenseDestination" prefHeight="25.0" prefWidth="61.0" promptText="Funds" />
          </children>
          <padding>
