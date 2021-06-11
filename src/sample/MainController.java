@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.XMLFormatter;
 
 public class MainController implements Initializable {
     ObservableList<Fund> fundObservableList = FXCollections.observableArrayList();
@@ -33,7 +34,21 @@ public class MainController implements Initializable {
         fundObservableList.add(new Fund("Daily"));
         fundObservableList.add(new Fund("Study"));
         fundObservableList.add(new Fund("Subsistence"));
+        fundObservableList.get(0).getExpenseList().add(
+                new Expense(fundObservableList.get(0).getFundName(),"Buy some foods",60));
+        fundObservableList.get(0).getExpenseList().add(
+                new Expense(fundObservableList.get(0).getFundName(),"Breakfast",20));
+       fundObservableList.get(1).getExpenseList().add(
+                new Expense(fundObservableList.get(1).getFundName(),"Buy some Books",100));
+        fundObservableList.get(2).getExpenseList().add(
+                new Expense(fundObservableList.get(2).getFundName(),"Buy new clothes",150));
+    }
 
+    public void baseExpenseList() {
+        expenseObservableList.add(new Expense(fundObservableList.get(0).getFundName(),"Buy some foods",60));
+        expenseObservableList.add(new Expense(fundObservableList.get(0).getFundName(),"Breakfast",20));
+        expenseObservableList.add(new Expense(fundObservableList.get(1).getFundName(),"Buy some Books",100));
+        expenseObservableList.add(new Expense(fundObservableList.get(2).getFundName(),"Buy new clothes",150));
     }
 
     @FXML
@@ -74,8 +89,9 @@ public class MainController implements Initializable {
 
     @FXML
     private TextField tfNewFundName;
+
     @FXML
-    private TextField txtFundName;
+    private TextField tfCommand;
 
     @FXML
     private Button btnCreateFund;
