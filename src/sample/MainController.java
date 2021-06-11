@@ -34,22 +34,8 @@ public class MainController implements Initializable {
         fundObservableList.add(new Fund("Daily"));
         fundObservableList.add(new Fund("Study"));
         fundObservableList.add(new Fund("Subsistence"));
-        fundObservableList.get(0).getExpenseList().add(
-                new Expense(fundObservableList.get(0).getFundName(),"Buy some foods",60));
-        fundObservableList.get(0).getExpenseList().add(
-                new Expense(fundObservableList.get(0).getFundName(),"Breakfast",20));
-       fundObservableList.get(1).getExpenseList().add(
-                new Expense(fundObservableList.get(1).getFundName(),"Buy some Books",100));
-        fundObservableList.get(2).getExpenseList().add(
-                new Expense(fundObservableList.get(2).getFundName(),"Buy new clothes",150));
     }
 
-    public void baseExpenseList() {
-        expenseObservableList.add(new Expense(fundObservableList.get(0).getFundName(),"Buy some foods",60));
-        expenseObservableList.add(new Expense(fundObservableList.get(0).getFundName(),"Breakfast",20));
-        expenseObservableList.add(new Expense(fundObservableList.get(1).getFundName(),"Buy some Books",100));
-        expenseObservableList.add(new Expense(fundObservableList.get(2).getFundName(),"Buy new clothes",150));
-    }
 
     @FXML
     private TableView<Fund> fundTableView;
