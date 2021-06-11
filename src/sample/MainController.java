@@ -265,9 +265,6 @@ public class MainController implements Initializable {
                 else if(expense.getEventName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
-                else if(expense.getEventTime().contains(lowerCaseFilter)) {
-                    return true;
-                }
                 else if(String.valueOf(expense.getEventCost()).contains(lowerCaseFilter))
                     return true;
                 else
