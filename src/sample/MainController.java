@@ -189,11 +189,17 @@ public class MainController implements Initializable {
             if (tfExpenseDestination.getValue().getFundName().equals(fund.getFundName())) {
                 fund.getExpenseList().add(new Expense(fund.getFundName(), tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
+                int last1 =fund.getTotalSpending();
+                int last2 = fund.getBalance();
+                fund.setTotalSpending(Integer.parseInt(tfEventCost.getText())+last1);
+                fund.setBalance(fund.getTotalDeposited()- fund.getTotalSpending());
                 expenseObservableList.add(new Expense(fund.getFundName(), tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
             }
             System.out.println("---" + fund + fund.getExpenseList().toString());
         }
+        fundTableView.refresh();
+        expenseTableView.refresh();
     }
 
     @FXML
