@@ -2,6 +2,8 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -96,7 +98,6 @@ public class MainController implements Initializable {
     public void clearText() {
         tfNewFundName.clear();
         tfDeposited.clear();
-        tfFundDestination.show();
         tfEventName.clear();
         tfEventCost.clear();
     }
@@ -110,7 +111,7 @@ public class MainController implements Initializable {
         loadFundTable();
         loadExpenseTable();
         setEditableEvent();
-
+        setTfFilter();
 
     }
     public void initialize(SortEvent<TableView<Fund>> tableViewSortEvent) {
@@ -245,6 +246,48 @@ public class MainController implements Initializable {
         SingleFund.forEach(allFund::remove);
     }
 
+    @FXML
+    private TextField tfFilter;
+
+    public void setTfFilter() {
+        FilteredList<Expense> expenseFilteredList = new FilteredList<>(expenseObservableList,b-> true);
+        tfFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            expenseFilteredList.setPredicate(expense ->  {
+                if(newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if(expense.getFundName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if(expense.getEventName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if(expense.getEventTime().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                else if(String.valueOf(expense.getEventCost()).contains(lowerCaseFilter))
+                    return true;
+                else
+                    return false;
+            });
+        });
+        SortedList<Expense> expenseSortedList = new SortedList<>(expenseFilteredList);
+        expenseSortedList.comparatorProperty().bind(expenseTableView.comparatorProperty());
+        expenseTableView.setItems(expenseSortedList);
+    }
+
+    @FXML
+    private Button btnImport;
+
+    @FXML
+    private TextField tfImport;
+
+    @FXML
+    private Button btnExport;
+
+    @FXML
+    private TextField tfExport;
 
 
 }
