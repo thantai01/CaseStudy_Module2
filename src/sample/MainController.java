@@ -93,6 +93,13 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<Fund, Button> colBtnDelete;
 
+    public void clearText() {
+        tfNewFundName.clear();
+        tfDeposited.clear();
+        tfFundDestination.show();
+        tfEventName.clear();
+        tfEventCost.clear();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -147,6 +154,7 @@ public class MainController implements Initializable {
 
     public void setBtnCreateFund(ActionEvent actionEvent) {
         fundObservableList.add(new Fund(tfNewFundName.getText()));
+        clearText();
     }
 
     public void setBtnDeposited(ActionEvent actionEvent) {
@@ -160,6 +168,7 @@ public class MainController implements Initializable {
             }
         }
         fundTableView.refresh();
+        clearText();
     }
 
     @FXML
@@ -216,6 +225,7 @@ public class MainController implements Initializable {
         }
         fundTableView.refresh();
         expenseTableView.refresh();
+        clearText();
     }
 
 
