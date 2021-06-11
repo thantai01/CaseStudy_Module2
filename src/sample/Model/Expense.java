@@ -3,10 +3,17 @@ package sample.Model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Expense {
+public class Expense extends Fund {
     private String eventTime;
     private String eventName;
     private int eventCost;
+
+    public Expense(String fundName, String eventName, int eventCost) {
+        super(fundName);
+        this.eventTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        this.eventName = eventName;
+        this.eventCost = eventCost;
+    }
 
     public Expense(String eventName, int eventCost) {
         this.eventTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
@@ -25,6 +32,10 @@ public class Expense {
         return eventName;
     }
 
+    public String getFundName() {
+        return super.getFundName();
+    }
+
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
@@ -40,10 +51,11 @@ public class Expense {
     @Override
     public String toString() {
         return
-               ": Expense { " +
-                "Time: " + eventTime +
-                ", Event: " + eventName + '\'' +
-                ", Cost: " + String.format("%,8d%n",eventCost) + "VND"+
-                '}' + "\n";
+                super.getFundName() +
+                        ": Expense { " +
+                        "Time: " + eventTime +
+                        ", Event: " + eventName + '\'' +
+                        ", Cost: " + String.format("%,8d%n", eventCost) + "VND" +
+                        '}' + "\n";
     }
 }

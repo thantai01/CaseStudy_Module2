@@ -30,6 +30,7 @@ public class MainController implements Initializable {
         fundObservableList.add(new Fund("Daily"));
         fundObservableList.add(new Fund("Study"));
         fundObservableList.add(new Fund("Subsistence"));
+
     }
 
     @FXML
@@ -89,7 +90,7 @@ public class MainController implements Initializable {
     private Label lbUserName;
 
     @FXML
-    private TableColumn<Fund,Button> colBtnDelete;
+    private TableColumn<Fund, Button> colBtnDelete;
 
 
     @Override
@@ -101,8 +102,8 @@ public class MainController implements Initializable {
         loadExpenseTable();
 
 
-
     }
+
     public void selectionFundView() {
         tfFundDestination.setItems(fundObservableList);
         tfExpenseDestination.setItems(fundObservableList);
@@ -123,20 +124,20 @@ public class MainController implements Initializable {
     private TableView<Expense> expenseTableView;
 
     @FXML
-    private TableColumn<Fund, String> colOfFundName;
+    private TableColumn<Expense, String> colOfFundName;
 
     @FXML
-    private TableColumn<Expense,String> colEventTime;
+    private TableColumn<Expense, String> colEventTime;
 
     @FXML
-    private TableColumn<Expense,String> colEventName;
+    private TableColumn<Expense, String> colEventName;
 
     @FXML
-    private TableColumn<Expense,Integer> colEventCost;
+    private TableColumn<Expense, Integer> colEventCost;
 
 
     public void loadExpenseTable() {
-//        colOfFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
+        colOfFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
         colEventName.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         colEventCost.setCellValueFactory(new PropertyValueFactory<>("eventCost"));
         colEventTime.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
@@ -171,12 +172,12 @@ public class MainController implements Initializable {
     }
 
     public void setBtnDeposited(ActionEvent actionEvent) {
-        for(Fund funds : fundObservableList) {
-            if(funds.getFundName().equals(tfFundDestination.getValue().getFundName())) {
+        for (Fund funds : fundObservableList) {
+            if (funds.getFundName().equals(tfFundDestination.getValue().getFundName())) {
                 int last = funds.getDeposited();
                 funds.setDeposited(Integer.parseInt(tfDeposited.getText()));
-                funds.setTotalDeposited(funds.getDeposited()+last);
-                funds.setBalance(+ funds.getTotalDeposited() - funds.getTotalSpending());
+                funds.setTotalDeposited(funds.getDeposited() + last);
+                funds.setBalance(+funds.getTotalDeposited() - funds.getTotalSpending());
                 funds.setLastRechargeDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
             }
         }
@@ -184,16 +185,27 @@ public class MainController implements Initializable {
     }
 
     public void setBtnAddToFund(ActionEvent actionEvent) {
-        for(Fund fund: fundObservableList) {
-            if(tfExpenseDestination.getValue().getFundName().equals(fund.getFundName())){
-                fund.getExpenseList().add(new Expense(tfEventName.getText(),
+        for (Fund fund : fundObservableList) {
+            if (tfExpenseDestination.getValue().getFundName().equals(fund.getFundName())) {
+                fund.getExpenseList().add(new Expense(fund.getFundName(), tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
-                expenseObservableList.add (new Expense(tfEventName.getText(),
+                expenseObservableList.add(new Expense(fund.getFundName(), tfEventName.getText(),
                         Integer.parseInt(tfEventCost.getText())));
             }
             System.out.println("---" + fund + fund.getExpenseList().toString());
         }
-//        System.out.println(fundObservableList + "\n");
     }
+
+    @FXML
+    private TextField tfDelete;
+    @FXML
+    private Button btnDelete;
+
+//    public void setBtnDelete(ActionEvent actionEvent) {
+//        for(Fund fund: fundObservableList){
+//            if(tfDelete.getText().equals(fund.getFundName())) {
+//                fundObservableList.set()
+//        }}
+//    }
 
 }

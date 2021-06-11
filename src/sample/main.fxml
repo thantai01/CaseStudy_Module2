@@ -63,7 +63,7 @@
          <children>
             <TableView fx:id="expenseTableView" prefHeight="358.0" prefWidth="516.0">
               <columns>
-                <TableColumn fx:id="tfOfFundName" prefWidth="117.0" text="Fund" />
+                <TableColumn fx:id="colOfFundName" prefWidth="117.0" text="Fund" />
                   <TableColumn fx:id="colEventTime" prefWidth="107.0" text="Event Time" />
                 <TableColumn fx:id="colEventName" prefWidth="107.0" text="Event Name" />
                   <TableColumn fx:id="colEventCost" prefWidth="117.0" text="Event Cost" />

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fund {
+public class Fund  {
     private String fundName;
     private int balance;
     private int totalSpending;
