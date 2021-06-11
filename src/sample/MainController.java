@@ -201,11 +201,10 @@ public class MainController implements Initializable {
     @FXML
     private Button btnDelete;
 
-//    public void setBtnDelete(ActionEvent actionEvent) {
-//        for(Fund fund: fundObservableList){
-//            if(tfDelete.getText().equals(fund.getFundName())) {
-//                fundObservableList.set()
-//        }}
-//    }
+    public void setBtnDelete(ActionEvent actionEvent) {
+        fundObservableList.removeIf(fund -> tfDelete.getText().equals(fund.getFundName()));
+    }
+
+
 
 }
