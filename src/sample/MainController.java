@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     ObservableList<Fund> fundObservableList = FXCollections.observableArrayList();
+    ObservableList<Expense> expenseObservableList = FXCollections.observableArrayList();
 
     public MainController() {
         fundObservableList.add(new Fund("Daily"));
@@ -62,10 +63,12 @@ public class MainController implements Initializable {
     private Button btnAddToFund;
 
     @FXML
-    private TextField tfExpenseDestination;
+    private ChoiceBox<Fund> tfExpenseDestination;
 
     @FXML
     private TextField tfNewFundName;
+    @FXML
+    private TextField txtFundName;
 
     @FXML
     private Button btnCreateFund;
@@ -74,7 +77,7 @@ public class MainController implements Initializable {
     private TextField tfDeposited;
 
     @FXML
-    private TextField tfFundDestination;
+    private ChoiceBox<Fund> tfFundDestination;
 
     @FXML
     private Button btnDeposited;
@@ -83,14 +86,64 @@ public class MainController implements Initializable {
     private Label lbUserName;
 
     @FXML
-    private TableColumn<Button,Fund> colBtnDelete;
+    private TableColumn<Fund,Button> colBtnDelete;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fundTableView.setEditable(true);
+        setEditableFundName();
+        loadFundTable();
+        loadExpenseTable();
 
+        tfFundDestination.setItems(fundObservableList);
+        tfExpenseDestination.setItems(fundObservableList);
+
+
+    }
+    public void selectionFundView() {
+        ObservableList<String> fundNameList = FXCollections.observableArrayList();
+        for (Fund fund : fundObservableList) {
+            fundNameList.add(fund.getFundName());
+        }
+    }
+
+    public void loadFundTable() {
         colFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
+        colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
+        colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
+        colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
+        colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
+        colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
+        colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
+        colBtnDelete.setCellValueFactory(new PropertyValueFactory<Fund,Button>("Delete"));
+        fundTableView.setItems(fundObservableList);
+    }
+
+    @FXML
+    private TableView<Expense> expenseTableView;
+
+    @FXML
+    private TableColumn<Fund, String> colOfFundName;
+
+    @FXML
+    private TableColumn<Expense,String> colEventTime;
+
+    @FXML
+    private TableColumn<Expense,String> colEventName;
+
+    @FXML
+    private TableColumn<Expense,Integer> colEventCost;
+
+
+    public void loadExpenseTable() {
+        colEventName.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        colEventCost.setCellValueFactory(new PropertyValueFactory<>("eventCost"));
+        colEventTime.setCellValueFactory(new PropertyValueFactory<>("eventTime"));
+        expenseTableView.setItems(expenseObservableList);
+    }
+
+    public void setEditableFundName() {
         colFundName.setEditable(true);
         colFundName.setCellFactory(TextFieldTableCell.<Fund>forTableColumn());
         colFundName.setOnEditCommit((TableColumn.CellEditEvent<Fund, String> event) -> {
@@ -100,17 +153,6 @@ public class MainController implements Initializable {
             Fund fund = event.getTableView().getItems().get(row);
             fund.setFundName(newFundName);
         });
-
-        colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
-        colBalance.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
-        colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
-        colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
-        colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
-
-        fundTableView.setItems(fundObservableList);
-        fundTableView.setEditable(true);
-
     }
 
     public void initialize(SortEvent<TableView<Fund>> tableViewSortEvent) {
@@ -130,7 +172,7 @@ public class MainController implements Initializable {
 
     public void setBtnDeposited(ActionEvent actionEvent) {
         for(Fund funds : fundObservableList) {
-            if(funds.getFundName().equals(tfFundDestination.getText())) {
+            if(funds.getFundName().equals(tfFundDestination.getItems().getClass().getName())) {
                 int last = funds.getDeposited();
                 funds.setDeposited(Integer.parseInt(tfDeposited.getText()));
                 funds.setTotalDeposited(funds.getDeposited()+last);
@@ -141,17 +183,21 @@ public class MainController implements Initializable {
         fundTableView.refresh();
     }
 
-    @FXML
-    private TextArea taPrint;
     public void setBtnAddExpenseToFund(ActionEvent actionEvent) {
-        for (Fund funds:fundObservableList) {
-            if(funds.getFundName().equals(tfExpenseDestination.getText())) {
-                funds.getExpenseList().add(
-                        new Expense(tfEventName.getText(),Integer.parseInt(tfEventCost.getText())));
-            }
-            System.out.println(funds + "\n");
-        }
+       expenseObservableList.add(new Expense(tfEventName.getText(),
+               Integer.parseInt(tfEventCost.getText())));
     }
-
+    public void setBtnAddToFund(ActionEvent actionEvent) {
+        for(Fund fund: fundObservableList) {
+            if(txtFundName.getText().equals(fund.getFundName())){
+                fund.getExpenseList().add(new Expense(tfEventName.getText(),
+                        Integer.parseInt(tfEventCost.getText())));
+                expenseObservableList.add (new Expense(tfEventName.getText(),
+                        Integer.parseInt(tfEventCost.getText())));
+            }
+            System.out.println(fund);
+        }
+//        System.out.println(fundObservableList + "\n");
+    }
 
 }
