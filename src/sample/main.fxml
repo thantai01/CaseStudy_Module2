@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
    <children>
       <VBox layoutX="176.0" layoutY="48.0" prefHeight="166.0" prefWidth="766.0" style="-fx-background-color: #e6e6e6;">
          <children>
@@ -74,24 +74,24 @@
       </VBox>
       <Button fx:id="btnExport" layoutX="646.0" layoutY="554.0" mnemonicParsing="false" onAction="#exportToFile" prefHeight="25.0" prefWidth="150.0" text="Write File Data" />
       <Button fx:id="btnImport" layoutX="643.0" layoutY="396.0" mnemonicParsing="false" onAction="#readFromStringCSV" prefHeight="25.0" prefWidth="149.0" text="Load File Data" />
-      <Button fx:id="btnDelete1" layoutX="644.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteFund" prefHeight="25.0" prefWidth="149.0" text="Delete Fund" />
+      <Button fx:id="btnDelete1" layoutX="853.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteFund" prefHeight="25.0" prefWidth="87.0" text="Delete Fund" />
       <TextField fx:id="tfImport" layoutX="643.0" layoutY="330.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;FundData&gt;" />
       <TextField fx:id="tfExport" layoutX="646.0" layoutY="518.0" prefHeight="25.0" prefWidth="149.0" promptText="To Destination" />
       <VBox layoutX="14.0" layoutY="48.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: gray;" />
-      <Label layoutX="647.0" layoutY="432.0" text="Export">
+      <Label layoutX="647.0" layoutY="432.0" text="Export Data">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="643.0" layoutY="271.0" text="Import">
+      <Label layoutX="646.0" layoutY="301.0" text="Import Data">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="choiceBox1" layoutX="645.0" layoutY="453.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBox2" layoutX="645.0" layoutY="485.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBox3" layoutX="643.0" layoutY="292.0" prefWidth="150.0" />
-      <Button fx:id="btnExit" layoutX="647.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="292.0" text="Exit to Desktop" />
+      <ChoiceBox fx:id="choiceBox3" layoutX="735.0" layoutY="297.0" prefHeight="25.0" prefWidth="199.0" />
+      <Button fx:id="btnExit" layoutX="647.0" layoutY="593.0" mnemonicParsing="false" onAction="#setBtnExit" prefHeight="25.0" prefWidth="292.0" text="Exit to Desktop" />
       <TextField fx:id="tfImport1" layoutX="645.0" layoutY="363.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;ExpenseData&gt;" />
       <VBox layoutX="176.0" layoutY="473.0" prefHeight="150.0" prefWidth="137.0" spacing="10.0" style="-fx-border-style: solid;">
          <children>

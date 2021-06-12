@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import sample.FileIO.ReadFile;
 import sample.FileIO.WriteFile;
@@ -35,11 +37,7 @@ public class MainController implements Initializable {
     ObservableList<Expense> expenseObservableList = FXCollections.observableArrayList();
 
     public MainController() {
-        fundObservableList.add(new Fund("Daily"));
-        fundObservableList.add(new Fund("Study"));
-        fundObservableList.add(new Fund("Subsistence"));
     }
-
 
     @FXML
     private TableView<Fund> fundTableView;
@@ -390,6 +388,14 @@ public class MainController implements Initializable {
         expenseTableView.refresh();
     }
 
+    @FXML
+    private Button btnExit;
+    @FXML
+    private AnchorPane anchorPane;
 
-
+    public void setBtnExit(ActionEvent actionEvent) {
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        System.out.println("You successfully logged out");
+        stage.close();
+    }
 }
