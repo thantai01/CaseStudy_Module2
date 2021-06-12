@@ -16,9 +16,11 @@ import sample.Model.Account;
 import sample.Model.Expense;
 import sample.Model.Fund;
 
+import javax.swing.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -278,15 +280,63 @@ public class MainController implements Initializable {
 
     @FXML
     private Button btnImport;
-
     @FXML
     private TextField tfImport;
-
     @FXML
     private Button btnExport;
-
     @FXML
     private TextField tfExport;
+
+
+    @FXML
+    private DatePicker fromDate;
+    @FXML
+    private DatePicker toDate;
+    @FXML
+    private Button btnTimeSearch;
+    @FXML
+    private Button btnTimeReset;
+
+    public void setBtnTimeSearch(ActionEvent actionEvent) {
+        ObservableList<Expense> timeFilterList = FXCollections.observableArrayList();
+        SortedList<Expense> timeSortedList = new SortedList<>(timeFilterList);
+        for(Expense expense:expenseObservableList) {
+            LocalDate expenseTime = LocalDate.parse(expense.getEventTime(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            if(expenseTime.compareTo(fromDate.getValue())>=0 && toDate.getValue().compareTo(expenseTime)<=0) {
+                timeSortedList.add(expense);
+            }
+        }
+        expenseTableView.setItems(timeSortedList);
+    }
+
+    public void setBtnTimeReset(ActionEvent actionEvent) {
+        expenseTableView.setItems(expenseObservableList);
+    }
+
+    @FXML
+    private TextField fromCost;
+    @FXML
+    private TextField toCost;
+    @FXML
+    private Button btnCostSearch;
+    @FXML
+    private Button btnCostReset;
+
+    public void setBtnCostSearch(ActionEvent actionEvent) {
+        ObservableList<Expense> costFilterList = FXCollections.observableArrayList();
+        SortedList<Expense> costSortedList = new SortedList<>(costFilterList);
+        for (Expense expense: expenseObservableList) {
+            if(expense.getEventCost()>=Integer.parseInt(fromCost.getText())
+                    && expense.getEventCost()<= Integer.parseInt(toCost.getText())) {
+                costSortedList.add(expense);
+            }
+        }
+        expenseTableView.setItems(costSortedList);
+    }
+
+    public void setBtnCostReset(ActionEvent actionEvent) {
+        expenseTableView.setItems(expenseObservableList);
+    }
 
 
 }
