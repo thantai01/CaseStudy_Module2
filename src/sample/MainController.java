@@ -116,6 +116,7 @@ public class MainController implements Initializable {
         loadExpenseTable();
         setEditableEvent();
         setTfFilter();
+        setChoiceBox();
 
     }
     public void initialize(SortEvent<TableView<Fund>> tableViewSortEvent) {
@@ -286,6 +287,29 @@ public class MainController implements Initializable {
     private Button btnExport;
     @FXML
     private TextField tfExport;
+    @FXML
+    private ChoiceBox<String> choiceBox1;
+    @FXML
+    private ChoiceBox<String> choiceBox2;
+
+    public void setChoiceBox() {
+        ObservableList<String> choice1 = FXCollections.observableArrayList();
+        choice1.add("Expense List");
+        choice1.add("Fund List");
+        choiceBox1.setItems(choice1);
+        ObservableList<String> choice2 = FXCollections.observableArrayList();
+        choice2.add("To CSV File");
+        choice2.add("To Text File");
+        choiceBox2.setItems(choice2);
+    }
+
+
+
+
+
+
+
+
 
 
     @FXML
@@ -307,10 +331,12 @@ public class MainController implements Initializable {
             }
         }
         expenseTableView.setItems(timeSortedList);
+        expenseTableView.refresh();
     }
 
     public void setBtnTimeReset(ActionEvent actionEvent) {
         expenseTableView.setItems(expenseObservableList);
+        expenseTableView.refresh();
     }
 
     @FXML
@@ -332,11 +358,14 @@ public class MainController implements Initializable {
             }
         }
         expenseTableView.setItems(costSortedList);
+        expenseTableView.refresh();
     }
 
     public void setBtnCostReset(ActionEvent actionEvent) {
         expenseTableView.setItems(expenseObservableList);
+        expenseTableView.refresh();
     }
+
 
 
 }

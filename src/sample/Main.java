@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Money Tracing & Controller Application");
+        primaryStage.setTitle("Mơ nì cơn trôn lơ");
         primaryStage.setScene(scene);
         primaryStage.show();
 
