@@ -24,6 +24,13 @@ public class Expense extends Fund {
     public Expense() {
     }
 
+    public Expense(String s, String s1, String s2, int s3) {
+        super(s);
+        this.eventTime = s1;
+        this.eventName = s2;
+        this.eventCost = s3;
+    }
+
     public String getEventTime() {
         return eventTime;
     }
@@ -52,10 +59,11 @@ public class Expense extends Fund {
     public String toString() {
         return
                 super.getFundName() +
-                        ": Expense { " +
-                        "Time: " + eventTime +
-                        ", Event: " + eventName + '\'' +
-                        ", Cost: " + String.format("%,8d%n", eventCost) + "VND" +
-                        '}' + "\n";
+                        "-Time: " + eventTime +
+                        "-Event: " + eventName + '\'' +
+                        "-Cost: " + eventCost
+//                      + String.format("%,8d%n", eventCost)
+                       ;
+//                        + "\n";
     }
 }

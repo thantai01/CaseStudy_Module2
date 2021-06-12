@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
+import sample.FileIO.ReadFile;
+import sample.FileIO.WriteFile;
 import sample.Model.Account;
 import sample.Model.Expense;
 import sample.Model.Fund;
@@ -284,6 +286,8 @@ public class MainController implements Initializable {
     @FXML
     private TextField tfImport;
     @FXML
+    private TextField tfImport1;
+    @FXML
     private Button btnExport;
     @FXML
     private TextField tfExport;
@@ -291,6 +295,8 @@ public class MainController implements Initializable {
     private ChoiceBox<String> choiceBox1;
     @FXML
     private ChoiceBox<String> choiceBox2;
+    @FXML
+    private ChoiceBox<String> choiceBox3;
 
     public void setChoiceBox() {
         ObservableList<String> choice1 = FXCollections.observableArrayList();
@@ -299,18 +305,38 @@ public class MainController implements Initializable {
         choiceBox1.setItems(choice1);
         ObservableList<String> choice2 = FXCollections.observableArrayList();
         choice2.add("To CSV File");
-        choice2.add("To Text File");
         choiceBox2.setItems(choice2);
+        ObservableList<String> choice3 = FXCollections.observableArrayList();
+        choice3.add(".csv");
+        choiceBox3.setItems(choice3);
     }
 
-
-
-
-
-
-
-
-
+    public void exportToFile(ActionEvent actionEvent) throws Exception {
+        if(choiceBox1.getValue().equals("Expense List")
+                && choiceBox2.getValue().equals("To CSV File")) {
+            WriteFile.writeExpenseToStringFile(tfExport.getText(),expenseObservableList);
+        } else if(choiceBox1.getValue().equals("Fund List")
+                && choiceBox2.getValue().equals("To CSV File")) {
+            WriteFile.writeFundsToStringFile(tfExport.getText(),fundObservableList);
+        }
+    }
+    public void readFromStringCSV(ActionEvent actionEvent) throws Exception {
+        if(choiceBox3.getValue().equals(".csv")) {
+            fundObservableList = ReadFile.readFundCSVFile(tfImport.getText());
+            expenseObservableList = ReadFile.readExpenseCSVFile(tfImport1.getText());
+            for(Fund fund: fundObservableList) {
+                for(Expense expense : expenseObservableList) {
+                    if(fund.getFundName().equals(expense.getFundName())) {
+                        fund.getExpenseList().add(expense);
+                    }
+                }
+            }
+            fundTableView.setItems(fundObservableList);
+            fundTableView.refresh();
+            expenseTableView.setItems(expenseObservableList);
+            expenseTableView.refresh();
+        }
+    }
 
     @FXML
     private DatePicker fromDate;

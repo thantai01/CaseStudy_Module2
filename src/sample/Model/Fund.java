@@ -31,6 +31,17 @@ public class Fund  {
     public Fund() {
     }
 
+    public Fund(String s, int parseInt, int parseInt1, int parseInt2, int parseInt3, String s1, String s2) {
+        this.fundName = s;
+        this.balance = parseInt;
+        this.totalSpending = parseInt1;
+        this.deposited = parseInt2;
+        this.totalDeposited =parseInt3;
+        this.createdTime = s1;
+        this.lastRechargeDate = s2;
+        this.expenseList = new ArrayList<>();
+    }
+
     public String getFundName() {
         return fundName;
     }

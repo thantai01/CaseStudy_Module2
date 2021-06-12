@@ -11,7 +11,7 @@ public class WriteFile {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
     private static final String EXPENSE_FILE_HEADER = "";
-    private static final String FUND_FILE_HEADER = "";
+    private static final String FUND_FILE_HEADER = "FundName,Balance,TotalSpending,Deposited,TotalDeposited,CreatedTime,LastRechargeTime,ExpenseList";
 
     public static void writeExpenseToStringFile(String path, ObservableList<Expense> expenseList) throws Exception {
         FileWriter fw = new FileWriter(path);
@@ -50,7 +50,6 @@ public class WriteFile {
                     + fund.getTotalDeposited() + COMMA_DELIMITER
                     + fund.getCreatedTime() + COMMA_DELIMITER
                     + fund.getLastRechargeDate() + COMMA_DELIMITER
-                    + fund.getExpenseList()
                     + NEW_LINE_SEPARATOR
             );
         }
