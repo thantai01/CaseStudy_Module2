@@ -349,14 +349,13 @@ public class MainController implements Initializable {
 
     public void setBtnTimeSearch(ActionEvent actionEvent) {
         ObservableList<Expense> timeFilterList = FXCollections.observableArrayList();
-        SortedList<Expense> timeSortedList = new SortedList<>(timeFilterList);
         for(Expense expense:expenseObservableList) {
             LocalDate expenseTime = LocalDate.parse(expense.getEventTime(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             if(expenseTime.compareTo(fromDate.getValue())>=0 && toDate.getValue().compareTo(expenseTime)<=0) {
-                timeSortedList.add(expense);
+                timeFilterList.add(expense);
             }
         }
-        expenseTableView.setItems(timeSortedList);
+        expenseTableView.setItems(timeFilterList);
         expenseTableView.refresh();
     }
 
@@ -376,14 +375,13 @@ public class MainController implements Initializable {
 
     public void setBtnCostSearch(ActionEvent actionEvent) {
         ObservableList<Expense> costFilterList = FXCollections.observableArrayList();
-        SortedList<Expense> costSortedList = new SortedList<>(costFilterList);
         for (Expense expense: expenseObservableList) {
             if(expense.getEventCost()>=Integer.parseInt(fromCost.getText())
                     && expense.getEventCost()<= Integer.parseInt(toCost.getText())) {
-                costSortedList.add(expense);
+                costFilterList.add(expense);
             }
         }
-        expenseTableView.setItems(costSortedList);
+        expenseTableView.setItems(costFilterList);
         expenseTableView.refresh();
     }
 

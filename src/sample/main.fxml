@@ -60,7 +60,7 @@
       </VBox>
       <Label layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="79.0" text="Welcome:" underline="true" />
       <Label fx:id="lbUserName" layoutX="90.0" layoutY="14.0" text="userName" />
-      <VBox layoutX="176.0" layoutY="225.0" prefHeight="394.0" prefWidth="449.0">
+      <VBox layoutX="176.0" layoutY="225.0" prefHeight="242.0" prefWidth="449.0">
          <children>
             <TableView fx:id="expenseTableView" prefHeight="402.0" prefWidth="449.0">
               <columns>
@@ -72,78 +72,86 @@
             </TableView>
          </children>
       </VBox>
-      <HBox layoutX="633.0" layoutY="225.0" prefHeight="324.0" prefWidth="162.0" spacing="20.0">
+      <Button fx:id="btnExport" layoutX="646.0" layoutY="554.0" mnemonicParsing="false" onAction="#exportToFile" prefHeight="25.0" prefWidth="150.0" text="Write File Data" />
+      <Button fx:id="btnImport" layoutX="643.0" layoutY="396.0" mnemonicParsing="false" onAction="#readFromStringCSV" prefHeight="25.0" prefWidth="149.0" text="Load File Data" />
+      <Button fx:id="btnDelete1" layoutX="644.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteFund" prefHeight="25.0" prefWidth="149.0" text="Delete Fund" />
+      <TextField fx:id="tfImport" layoutX="643.0" layoutY="330.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;FundData&gt;" />
+      <TextField fx:id="tfExport" layoutX="646.0" layoutY="518.0" prefHeight="25.0" prefWidth="149.0" promptText="To Destination" />
+      <VBox layoutX="14.0" layoutY="48.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: gray;" />
+      <Label layoutX="647.0" layoutY="432.0" text="Export">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="643.0" layoutY="271.0" text="Import">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="choiceBox1" layoutX="645.0" layoutY="453.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBox2" layoutX="645.0" layoutY="485.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choiceBox3" layoutX="643.0" layoutY="292.0" prefWidth="150.0" />
+      <Button fx:id="btnExit" layoutX="647.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="292.0" text="Exit to Desktop" />
+      <TextField fx:id="tfImport1" layoutX="645.0" layoutY="363.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;ExpenseData&gt;" />
+      <VBox layoutX="176.0" layoutY="473.0" prefHeight="150.0" prefWidth="137.0" spacing="10.0" style="-fx-border-style: solid;">
+         <children>
+            <Label contentDisplay="CENTER" text="Filter By Name " underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfFilter" promptText="Event Filter " />
+         </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+      </VBox>
+      <VBox layoutX="324.0" layoutY="473.0" prefHeight="150.0" prefWidth="150.0" spacing="10.0" style="-fx-border-style: solid;">
          <children>
-            <VBox prefHeight="297.0" prefWidth="149.0" spacing="5.0" style="-fx-border-style: solid;">
+            <Label text="Search By Date Time" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="fromDate" promptText="From" />
+            <DatePicker fx:id="toDate" promptText="To" />
+            <HBox prefHeight="33.0" prefWidth="137.0" spacing="20.0">
                <children>
-                  <Label contentDisplay="CENTER" text="Filter Menu" underline="true">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tfFilter" promptText="Event Filter " />
-                  <Label text="Search By Date Time" underline="true">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="fromDate" promptText="From" />
-                  <DatePicker fx:id="toDate" promptText="To" />
-                  <HBox prefHeight="33.0" prefWidth="137.0" spacing="20.0">
-                     <children>
-                        <Button fx:id="btnTimeSearch" mnemonicParsing="false" onAction="#setBtnTimeSearch" text="Search" />
-                        <Button fx:id="btnTimeReset" mnemonicParsing="false" onAction="#setBtnTimeReset" text="Reset" />
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
-                  <Label text="Search By Cost" underline="true">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TextField promptText="From" />
-                  <TextField promptText="To" />
-                  <HBox layoutX="16.0" layoutY="145.0" prefHeight="33.0" prefWidth="137.0" spacing="20.0">
-                     <children>
-                        <Button fx:id="btnCostSearch" mnemonicParsing="false" onAction="#setBtnCostSearch" text="Search" />
-                        <Button fx:id="btnCostReset" mnemonicParsing="false" onAction="#setBtnCostReset" text="Reset" />
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </HBox>
+                  <Button fx:id="btnTimeSearch" mnemonicParsing="false" onAction="#setBtnTimeSearch" text="Search" />
+                  <Button fx:id="btnTimeReset" mnemonicParsing="false" onAction="#setBtnTimeReset" text="Reset" />
                </children>
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
-      <Button fx:id="btnExport" layoutX="794.0" layoutY="542.0" mnemonicParsing="false" onAction="#exportToFile" prefHeight="25.0" prefWidth="150.0" text="Write File Data" />
-      <Button fx:id="btnImport" layoutX="793.0" layoutY="395.0" mnemonicParsing="false" onAction="#readFromStringCSV" prefHeight="25.0" prefWidth="149.0" text="Load File Data" />
-      <Button fx:id="btnDelete1" layoutX="793.0" layoutY="230.0" mnemonicParsing="false" onAction="#deleteFund" prefHeight="25.0" prefWidth="149.0" text="Delete Fund" />
-      <TextField fx:id="tfImport" layoutX="793.0" layoutY="329.0" prefHeight="25.0" prefWidth="149.0" promptText="&lt;FundData&gt;" />
-      <TextField fx:id="tfExport" layoutX="794.0" layoutY="506.0" prefHeight="25.0" prefWidth="149.0" promptText="To Destination" />
-      <VBox layoutX="14.0" layoutY="48.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: gray;" />
-      <Label layoutX="795.0" layoutY="420.0" text="Export">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="793.0" layoutY="270.0" text="Import">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="choiceBox1" layoutX="793.0" layoutY="441.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBox2" layoutX="793.0" layoutY="473.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="choiceBox3" layoutX="793.0" layoutY="291.0" prefWidth="150.0" />
-      <Button fx:id="btnExit" layoutX="795.0" layoutY="592.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Exit to Desktop" />
-      <TextField fx:id="tfImport1" layoutX="795.0" layoutY="362.0" prefHeight="25.0" prefWidth="149.0" promptText="&lt;ExpenseData&gt;" />
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="485.0" layoutY="473.0" prefHeight="150.0" prefWidth="140.0" spacing="10.0" style="-fx-border-style: solid;">
+         <children>
+            <Label text="Search By Cost" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fromCost" promptText="From" />
+            <TextField fx:id="toCost" promptText="To" />
+            <HBox prefHeight="33.0" prefWidth="137.0" spacing="20.0">
+               <children>
+                  <Button fx:id="btnCostSearch" mnemonicParsing="false" onAction="#setBtnCostSearch" text="Search" />
+                  <Button fx:id="btnCostReset" mnemonicParsing="false" onAction="#setBtnCostReset" text="Reset" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="807.0" layoutY="398.0" prefHeight="185.0" prefWidth="128.0" style="-fx-background-color: #e0ebe2;" />
    </children>
 </AnchorPane>
