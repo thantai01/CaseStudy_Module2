@@ -1,4 +1,4 @@
-package sample;
+package sample.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +19,7 @@ import sample.FileIO.WriteFile;
 import sample.Model.Account;
 import sample.Model.Expense;
 import sample.Model.Fund;
+import sample.SceneController;
 
 import javax.swing.*;
 import java.net.URL;
@@ -402,7 +403,7 @@ public class MainController implements Initializable {
     }
     public void setBtnLogout(ActionEvent actionEvent) throws Exception {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
-        SceneController.switchToSceneLogin(actionEvent);
+        SceneController.logout(actionEvent);
         System.out.println("You successfully logout");
     }
 }
