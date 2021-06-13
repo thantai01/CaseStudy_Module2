@@ -51,11 +51,16 @@ public class SceneController {
     private TextField tfDialog;
 
     public void signUp(ActionEvent actionEvent) {
-        accountManager.signUp(tfUserID.getText(),tfUserPass.getText());
-        System.out.println(" Successfully!" +
-                " Account [ID:" + tfUserID.getText() + ",password:" +tfUserPass.getText()+"]");
-        System.out.println(accountManager);
-        tfDialog.setText("Successfully create account");
+        if(tfUserID.getText() !=null && tfUserPass.getText()!=null) {
+            accountManager.signUp(tfUserID.getText(),tfUserPass.getText());
+            System.out.println(" Successfully!" +
+                    " Account [ID:" + tfUserID.getText() + ",password:" +tfUserPass.getText()+"]");
+            System.out.println(accountManager.getAccountList());
+            tfDialog.setText("Successfully create account");
+        } else {
+            tfDialog.setText("Fill up a blank input");
+        }
+
     }
 
     public void signIn(ActionEvent actionEvent) throws Exception {
@@ -67,7 +72,7 @@ public class SceneController {
                 } else {
                     tfDialog.setText("Wrong ID or Password");
                 }
-        } else if(tfUserID.getText()==null || tfUserPass.getText() ==null) {
+        } else if(tfUserID.getText() ==null || tfUserPass.getText() ==null) {
             tfDialog.setText("Please fill up  a blank input");
         }
     }

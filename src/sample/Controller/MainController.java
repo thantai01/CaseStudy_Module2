@@ -402,7 +402,7 @@ public class MainController implements Initializable {
         stage.close();
     }
     public void setBtnLogout(ActionEvent actionEvent) throws Exception {
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
+//        Stage stage = (Stage) anchorPane.getScene().getWindow();
         SceneController.logout(actionEvent);
         System.out.println("You successfully logout");
     }
