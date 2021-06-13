@@ -27,6 +27,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -334,6 +335,8 @@ public class MainController implements Initializable {
             fundTableView.refresh();
             expenseTableView.setItems(expenseObservableList);
             expenseTableView.refresh();
+            selectionFundView();
+            setTfFilter();
         }
     }
 
@@ -349,8 +352,9 @@ public class MainController implements Initializable {
     public void setBtnTimeSearch(ActionEvent actionEvent) {
         ObservableList<Expense> timeFilterList = FXCollections.observableArrayList();
         for(Expense expense:expenseObservableList) {
-            LocalDate expenseTime = LocalDate.parse(expense.getEventTime(),DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            if(expenseTime.compareTo(fromDate.getValue())>=0 && toDate.getValue().compareTo(expenseTime)<=0) {
+            LocalDate expenseTime = LocalDate.parse(expense.getEventTime(),DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+            if(expenseTime.compareTo(fromDate.getValue())>=0
+                    && toDate.getValue().compareTo(expenseTime)>=0) {
                 timeFilterList.add(expense);
             }
         }
@@ -361,6 +365,7 @@ public class MainController implements Initializable {
     public void setBtnTimeReset(ActionEvent actionEvent) {
         expenseTableView.setItems(expenseObservableList);
         expenseTableView.refresh();
+        setTfFilter();
     }
 
     @FXML
@@ -387,6 +392,7 @@ public class MainController implements Initializable {
     public void setBtnCostReset(ActionEvent actionEvent) {
         expenseTableView.setItems(expenseObservableList);
         expenseTableView.refresh();
+        setTfFilter();
     }
 
     @FXML

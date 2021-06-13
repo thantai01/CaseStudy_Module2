@@ -64,7 +64,6 @@ public class SceneController {
     }
 
     public void signIn(ActionEvent actionEvent) throws Exception {
-        if (tfUserID.getText()!=null && tfUserPass.getText()!=null) {
             for (Account account: accountManager.getAccountList())
                 if(tfUserID.getText().equals(account.getID())
                         && tfUserPass.getText().equals(account.getPassword())) {
@@ -72,8 +71,5 @@ public class SceneController {
                 } else {
                     tfDialog.setText("Wrong ID or Password");
                 }
-        } else if(tfUserID.getText() ==null || tfUserPass.getText() ==null) {
-            tfDialog.setText("Please fill up  a blank input");
         }
-    }
 }
