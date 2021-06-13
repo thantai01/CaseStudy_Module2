@@ -392,10 +392,17 @@ public class MainController implements Initializable {
     private Button btnExit;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private Button btnLogout;
 
     public void setBtnExit(ActionEvent actionEvent) {
         Stage stage = (Stage) anchorPane.getScene().getWindow();
-        System.out.println("You successfully logged out");
+        System.out.println("You successfully exit");
         stage.close();
+    }
+    public void setBtnLogout(ActionEvent actionEvent) throws Exception {
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        SceneController.switchToSceneLogin(actionEvent);
+        System.out.println("You successfully logout");
     }
 }

@@ -91,7 +91,7 @@
       <ChoiceBox fx:id="choiceBox1" layoutX="645.0" layoutY="453.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBox2" layoutX="645.0" layoutY="485.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choiceBox3" layoutX="735.0" layoutY="297.0" prefHeight="25.0" prefWidth="199.0" />
-      <Button fx:id="btnExit" layoutX="647.0" layoutY="593.0" mnemonicParsing="false" onAction="#setBtnExit" prefHeight="25.0" prefWidth="292.0" text="Exit to Desktop" />
+      <Button fx:id="btnExit" layoutX="811.0" layoutY="593.0" mnemonicParsing="false" onAction="#setBtnExit" prefHeight="25.0" prefWidth="128.0" text="Exit to Desktop" />
       <TextField fx:id="tfImport1" layoutX="645.0" layoutY="363.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;ExpenseData&gt;" />
       <VBox layoutX="176.0" layoutY="473.0" prefHeight="150.0" prefWidth="137.0" spacing="10.0" style="-fx-border-style: solid;">
          <children>
@@ -153,5 +153,6 @@
          </padding>
       </VBox>
       <VBox layoutX="807.0" layoutY="398.0" prefHeight="185.0" prefWidth="128.0" style="-fx-background-color: #e0ebe2;" />
+      <Button fx:id="btnLogout" layoutX="646.0" layoutY="593.0" mnemonicParsing="false" onAction="#setBtnLogout" prefHeight="25.0" prefWidth="150.0" text="Logout" />
    </children>
 </AnchorPane>
