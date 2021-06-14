@@ -122,14 +122,6 @@ public class MainController implements Initializable {
 
     }
     public void initialize(SortEvent<TableView<Fund>> tableViewSortEvent) {
-//        colFundName.setCellValueFactory(new PropertyValueFactory<>("fundName"));
-//        colCreatedDate.setCellValueFactory(new PropertyValueFactory<>("createdTime"));
-//        colBalance.setCellValueFactory(new PropertyValueFactory<>("fundBalance"));
-//        colTotalSpending.setCellValueFactory(new PropertyValueFactory<>("totalSpending"));
-//        colTotalDeposited.setCellValueFactory(new PropertyValueFactory<>("totalDeposited"));
-//        colLastDeposited.setCellValueFactory(new PropertyValueFactory<>("deposited"));
-//        colLastDepositedTime.setCellValueFactory(new PropertyValueFactory<>("lastRechargeDate"));
-//        fundTableView.setItems(fundObservableList);
     }
 
     public void selectionFundView() {
@@ -214,8 +206,6 @@ public class MainController implements Initializable {
             expense.setEventName(newEventName);
         });
         colEventCost.setEditable(true);
-//        Callback<TableColumn<Expense, String>, TableCell<Expense, String>> a = TextFieldTableCell.<Expense>forTableColumn();
-//        colEventCost.setCellFactory(a.);
     }
 
     public void setBtnAddToFund(ActionEvent actionEvent) {
@@ -252,6 +242,7 @@ public class MainController implements Initializable {
         SingleFund = fundTableView.getSelectionModel().getSelectedItems();
         SingleFund.forEach(allFund::remove);
     }
+
 
     @FXML
     private TextField tfFilter;

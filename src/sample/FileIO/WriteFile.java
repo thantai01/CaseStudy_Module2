@@ -12,8 +12,8 @@ import java.util.List;
 public class WriteFile {
     private static final String COMMA_DELIMITER = ",";
     private static final String NEW_LINE_SEPARATOR = "\n";
-    private static final String EXPENSE_FILE_HEADER = "";
-    private static final String FUND_FILE_HEADER = "FundName,Balance,TotalSpending,Deposited,TotalDeposited,CreatedTime,LastRechargeTime,ExpenseList";
+    private static final String EXPENSE_FILE_HEADER = "FundName,Time,Event,Cost";
+    private static final String FUND_FILE_HEADER = "FundName,Balance,TotalSpending,Deposited,TotalDeposited,CreatedTime,LastRechargeTime";
 
     public static void writeExpenseToStringFile(String path, ObservableList<Expense> expenseList) throws Exception {
         FileWriter fw = new FileWriter(path);
