@@ -1,8 +1,10 @@
 package sample.FileIO;
 
 import javafx.collections.ObservableList;
+import sample.Model.Account;
 import sample.Model.Expense;
 import sample.Model.Fund;
+import sample.Service.AccountManager;
 
 import java.io.*;
 import java.util.List;
@@ -65,5 +67,12 @@ public class WriteFile {
         objectOutputStream.flush();
         objectOutputStream.close();
         System.out.println("Success write Funds object to binary File");
+    }
+    public static void writeAccountObject(String path, AccountManager accountList) throws IOException {
+        ObjectOutputStream oss = new ObjectOutputStream(new FileOutputStream(path));
+        oss.writeObject(accountList);
+        oss.flush();
+        oss.close();
+        System.out.println("Success write Account Data");
     }
 }

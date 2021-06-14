@@ -2,10 +2,12 @@ package sample.Service;
 
 import sample.Model.Account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountManager {
+public class AccountManager implements Serializable {
+
     private List<Account> accountList;
 
     public AccountManager() {

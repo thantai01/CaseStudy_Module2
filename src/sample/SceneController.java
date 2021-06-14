@@ -10,10 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.FileIO.ReadFile;
+import sample.FileIO.WriteFile;
 import sample.Model.Account;
 import sample.Service.AccountManager;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.Objects;
 
 public class SceneController {
@@ -50,7 +53,7 @@ public class SceneController {
     @FXML
     private TextField tfDialog;
 
-    public void signUp(ActionEvent actionEvent) {
+    public void signUp(ActionEvent actionEvent) throws IOException {
         if(tfUserID.getText() !=null && tfUserPass.getText()!=null) {
             accountManager.signUp(tfUserID.getText(),tfUserPass.getText());
             System.out.println(" Successfully!" +
@@ -60,10 +63,12 @@ public class SceneController {
         } else {
             tfDialog.setText("Fill up a blank input");
         }
-
+        WriteFile.writeAccountObject("C:\\Users\\84936\\Desktop\\New folder\\accountList.txt",accountManager);
+        accountManager = ReadFile.readAccountList("C:\\Users\\84936\\Desktop\\New folder\\accountList.txt");
     }
 
     public void signIn(ActionEvent actionEvent) throws Exception {
+        accountManager = ReadFile.readAccountList("C:\\Users\\84936\\Desktop\\New folder\\accountList.txt");
             for (Account account: accountManager.getAccountList())
                 if(tfUserID.getText().equals(account.getID())
                         && tfUserPass.getText().equals(account.getPassword())) {

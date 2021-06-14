@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -59,7 +61,10 @@
          </padding>
       </VBox>
       <Label layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="79.0" text="Welcome:" underline="true" />
-      <Label fx:id="lbUserName" layoutX="90.0" layoutY="14.0" text="userName" />
+      <Label fx:id="lbUserName" layoutX="90.0" layoutY="14.0" text="Admin">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
       <VBox layoutX="176.0" layoutY="225.0" prefHeight="242.0" prefWidth="449.0">
          <children>
             <TableView fx:id="expenseTableView" prefHeight="402.0" prefWidth="449.0">
@@ -77,7 +82,6 @@
       <Button fx:id="btnDelete1" layoutX="853.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteFund" prefHeight="25.0" prefWidth="87.0" text="Delete Fund" />
       <TextField fx:id="tfImport" layoutX="643.0" layoutY="330.0" prefHeight="25.0" prefWidth="292.0" promptText="&lt;FundData&gt;" text="C:\Users\84936\Desktop\New folder\fundList.csv" />
       <TextField fx:id="tfExport" layoutX="646.0" layoutY="518.0" prefHeight="25.0" prefWidth="149.0" promptText="To Destination" />
-      <VBox layoutX="14.0" layoutY="48.0" prefHeight="166.0" prefWidth="156.0" style="-fx-background-color: gray;" />
       <Label layoutX="647.0" layoutY="432.0" text="Export Data">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -154,5 +158,10 @@
       </VBox>
       <VBox layoutX="807.0" layoutY="398.0" prefHeight="185.0" prefWidth="128.0" style="-fx-background-color: #e0ebe2;" />
       <Button fx:id="btnLogout" layoutX="646.0" layoutY="593.0" mnemonicParsing="false" onAction="#setBtnLogout" prefHeight="25.0" prefWidth="150.0" text="Logout" />
+      <ImageView fitHeight="166.0" fitWidth="156.0" layoutX="13.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/super-mario-cartoon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

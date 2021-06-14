@@ -1,10 +1,11 @@
 package sample.Model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Account {
+public class Account implements Serializable {
     private String ID;
     private String password;
     private List<Fund> fundList;
